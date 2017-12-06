@@ -20,6 +20,7 @@ class App extends Component {
       <div>
         <h1>{`Hello ${this.state.name} !!!`}</h1>
         <input onChange={this.changeName} type="text" />
+        <h2>List of Developers</h2>
       </div>
     );
   }
