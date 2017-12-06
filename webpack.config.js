@@ -13,6 +13,7 @@ module.exports = {
             { test: /.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ }
         ]
     },
+    devtool: "#inline-source-map",
     resolve: {
         extensions: ['.js','.jsx']
     }
