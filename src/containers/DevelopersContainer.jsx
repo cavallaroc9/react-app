@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+ import { bindActionCreators } from 'redux';
 import Developers from '../components/Developers';
+import { addDeveloper as addDeveloperAction } from '../actions/developersAction'
 
-const mapStateToProps = state => (
-  {
-    developerInfo: state.developerInfo
-  }
-);
+const mapStateToProps = state => ({
+  developerList: state.developerInfo.developerList
+});
 
-export default connect(mapStateToProps)(Developers);
+const mapDispatchToProps = dispatch => ({
+  addDeveloper: bindActionCreators(addDeveloperAction, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Developers);

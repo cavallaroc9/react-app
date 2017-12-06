@@ -1,35 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import DisplayList from './DisplayList';
 import AddItem from './AddItem';
 
-class Developers extends Component {
-  constructor() {
-    super();
-    this.state = {
-      developerList: []
-    };
-  }
+const Developers = ({ developerList, addDeveloper }) => {
+  return (
+    <div>
+      <h1>Developers!</h1>
+      <DisplayList list={developerList} />
+      <AddItem itemName={'developer'} addItem={addDeveloper} />
+    </div>
+  );
+}
 
-  addDeveloper = newDeveloper => {
-    this.setState({
-      ...this.state,
-      developerList: [
-        ...this.state.developerList,
-        newDeveloper
-      ]
-    });
-  }
-
-  render = () => {
-    return (
-      <div>
-        <h1>Developers!</h1>
-        <DisplayList list={this.state.developerList} />
-        <AddItem itemName={'developer'} addItem={this.addDeveloper} />
-      </div>
-    );
-  }
+Developers.defaultProps = {
+  developerList: [],
+  addDeveloper: () => {}
 }
 
 export default Developers;
