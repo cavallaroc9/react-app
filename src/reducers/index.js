@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import developerReducer from './developerReducer'
+
+// Reducers
+import developerReducer from './developerReducer';
+import userReducer from './userReducer';
 
 const reducer = combineReducers({
-  developerInfo: developerReducer
+  developerInfo: developerReducer,
+  userInfo: userReducer
 });
 
 export default reducer;

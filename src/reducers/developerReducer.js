@@ -1,6 +1,10 @@
-import { ADD_DEVELOPER } from '../actions/developersAction';
+import { ADD_DEVELOPER, CLEAR_DEVELOPERS } from '../actions/developersAction';
 
-export default (state = {developerList: []}, action) => {
+const initialState = {
+  developerList: []
+};
+
+export default (state = initialState, action) => {
   if (action.type === ADD_DEVELOPER) {
     return {
       ...state,
@@ -9,6 +13,12 @@ export default (state = {developerList: []}, action) => {
         action.newDeveloper
       ]
     }
+  } else if (action.type === CLEAR_DEVELOPERS) {
+    return {
+      ...state,
+      developerList: []
+    };
   }
+
   return state;
 };

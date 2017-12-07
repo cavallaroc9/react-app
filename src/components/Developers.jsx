@@ -11,11 +11,11 @@ const Developers = ({ developerList, addDeveloper }) => {
       <AddItem itemName={'developer'} addItem={addDeveloper} />
     </div>
   );
-}
+};
 
 Developers.defaultProps = {
   developerList: [],
   addDeveloper: () => {}
-}
+};
 
 export default Developers;
