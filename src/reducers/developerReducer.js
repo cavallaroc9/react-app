@@ -1,24 +1,41 @@
-import { ADD_DEVELOPER, CLEAR_DEVELOPERS } from '../actions/developersAction';
+import _ from 'lodash';
+import { ADD_DEVELOPER, CLEAR_DEVELOPERS, UPDATE_SEARCH } from '../actions/developersAction';
 
 const initialState = {
-  developerList: []
+  developerList: [],
+  displayDeveloperList: [],
+  searchName: ''
+};
+
+const filterDevelopersByName = (searchName = '', developerList = []) => {
+  return developerList.filter(developer => _.startsWith(developer, searchName));
 };
 
 export default (state = initialState, action) => {
-  if (action.type === ADD_DEVELOPER) {
-    return {
-      ...state,
-      developerList: [
+  switch(action.type){
+    case ADD_DEVELOPER:
+      const updatedDeveloperList = [
         ...state.developerList,
         action.newDeveloper
-      ]
-    }
-  } else if (action.type === CLEAR_DEVELOPERS) {
-    return {
-      ...state,
-      developerList: []
-    };
-  }
+      ];
 
-  return state;
+      return {
+        ...state,
+        developerList: updatedDeveloperList,
+        displayDeveloperList: filterDevelopersByName(state.searchName, updatedDeveloperList)
+      };
+    case CLEAR_DEVELOPERS:
+      return {
+        ...state,
+        developerList: []
+      };
+    case UPDATE_SEARCH:
+      return {
+        ...state,
+        searchName: action.name,
+        displayDeveloperList: filterDevelopersByName(action.name, state.developerList)
+      };
+    default:
+      return state;
+  }
 };

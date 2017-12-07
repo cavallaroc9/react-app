@@ -8,7 +8,7 @@ import Developers from '../components/Developers';
 import { addDeveloper as addDeveloperAction } from '../actions/developersAction'
 
 const mapStateToProps = state => ({
-  developerList: state.developerInfo.developerList
+  developerList: state.developerInfo.displayDeveloperList
 });
 
 const mapDispatchToProps = dispatch => ({

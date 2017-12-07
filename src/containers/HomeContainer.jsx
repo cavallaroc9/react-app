@@ -9,7 +9,7 @@ import Home from '../components/Home';
 import { changeName as changeNameAction } from '../actions/nameAction';
 
 const mapStateToProps = state => ({
-  developerList: _.get(state, 'developerInfo.developerList', ''),
+  developerList: _.get(state, 'developerInfo.displayDeveloperList', ''),
   userName: _.get(state, 'userInfo.name', '')
 });
 
